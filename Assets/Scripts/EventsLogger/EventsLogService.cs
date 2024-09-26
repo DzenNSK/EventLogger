@@ -34,6 +34,11 @@ namespace EventLogger
             UpdateTimers();
         }
 
+        private void OnApplicationQuit()
+        {
+            SaveUnsent();
+        }
+
         private void UpdateTimers()
         {
             saveTimer += Time.deltaTime;
