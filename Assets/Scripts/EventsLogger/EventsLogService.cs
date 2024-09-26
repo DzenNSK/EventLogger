@@ -74,6 +74,7 @@ namespace EventLogger
 
             dataInProcess.RemoveAll((ev) => handler.MessageData.Contains(ev));
             handlers.Remove(handler);
+            handler.onComplete -= OnMessageComplete;
             SaveUnsent();
         }
 
