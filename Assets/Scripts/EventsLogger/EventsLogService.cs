@@ -80,7 +80,6 @@ namespace EventLogger
 
         private void SaveUnsent()
         {
-            Debug.Log("save");
             PlayerPrefs.SetString(prefsKey, JsonConvert.SerializeObject(eventsBuffer.Union(dataInProcess).ToArray()));
             PlayerPrefs.Save();
             saveTimer = 0;
@@ -89,7 +88,6 @@ namespace EventLogger
         private void LoadBuffer()
         {
             if (!PlayerPrefs.HasKey(prefsKey)) return;
-            Debug.Log("Load" + PlayerPrefs.GetString(prefsKey));
             var savedData = JsonConvert.DeserializeObject(PlayerPrefs.GetString(prefsKey), typeof(GameEvent[])) as GameEvent[];
             if (savedData == null)
             {
